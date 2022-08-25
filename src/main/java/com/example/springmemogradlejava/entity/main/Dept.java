@@ -11,15 +11,11 @@ import javax.persistence.Table;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-
-
 @Entity
-@Table(name = "app_user", schema = "main")
-public class APP_USER {
+@Table(name = "dept", schema = "main")
+public class Dept {
     @Id
     private int id;
-    private int deptId;
-    private String firstName;
-    private String lastName;
-    private String remarks;
+    private String name;
+    private String divId;
 }
