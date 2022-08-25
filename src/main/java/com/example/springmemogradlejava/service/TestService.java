@@ -13,6 +13,7 @@ public class TestService{
     private final TestJpaRepository testJpaRepository;
 
     public List<Shop> findAll(){
+        System.out.println("ログ");
         List<Shop> list = testJpaRepository.findAll();
         return list;
     }

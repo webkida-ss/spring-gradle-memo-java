@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -19,5 +20,7 @@ public class Shop {
     private int id;
 
     private String name;
-    private LocalDate establishedDate;
+
+    @Column(name = "established_date")
+    private LocalDate foundationDate;// establishedDateをマッピング
 }
