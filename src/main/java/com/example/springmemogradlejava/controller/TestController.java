@@ -14,4 +14,11 @@ public class TestController {
     public String test1() {
         return testService.findAll().get(0).getName();
     }
+
+    @GetMapping("/test2")
+    public String test2() {
+        testService.saveAndFlush();
+        return "saveAndFlush";
+    }
+
 }
