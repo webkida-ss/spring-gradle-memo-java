@@ -21,4 +21,9 @@ public class TestController {
         return "saveAndFlush";
     }
 
+    @GetMapping("/test3")
+    public String test3() {
+        testService.saveAll();
+        return "saveAll";
+    }
 }

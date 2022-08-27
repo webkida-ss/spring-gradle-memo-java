@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
@@ -30,5 +31,22 @@ public class TestService {
                 .mapToInt(Shop::getId).max().getAsInt() + 1;
         shopJpaRepository.saveAndFlush(new Shop(id,
                 "店舗" + id, LocalDate.of(2022, 1, 1)));
+    }
+
+    public void saveAll() {
+        System.out.println("ログ");
+        List<Shop> list = shopJpaRepository.findAll();
+        int id = list.stream()
+                .mapToInt(Shop::getId).max().getAsInt() + 1;
+        List<Shop> shopList = new ArrayList<>();
+
+        for (int i = 0; i < 3; i++) {
+            int targetId = id + i;
+            System.out.println(targetId);
+            Shop shop = new Shop(targetId, "店舗" + targetId, LocalDate.of(2022, 1, 1));
+            shopList.add(shop);
+        }
+        shopJpaRepository.saveAll(shopList);// 登録データをセット
+        shopJpaRepository.flush();// DBに反映
     }
 }
