@@ -26,4 +26,10 @@ public class TestController {
         testService.saveAll();
         return "saveAll";
     }
+
+    @GetMapping("/test4")
+    public String test4() {
+        testService.delete();
+        return "delete";
+    }
 }

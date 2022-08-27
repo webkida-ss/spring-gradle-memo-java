@@ -49,4 +49,11 @@ public class TestService {
         shopJpaRepository.saveAll(shopList);// 登録データをセット
         shopJpaRepository.flush();// DBに反映
     }
+    public void delete() {
+        System.out.println("ログ");
+        List<Shop> list = shopJpaRepository.findAll();
+        int id = list.stream()
+                .mapToInt(Shop::getId).max().getAsInt();
+        shopJpaRepository.deleteById(id);
+    }
 }
