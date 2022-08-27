@@ -56,4 +56,10 @@ public class TestService {
                 .mapToInt(Shop::getId).max().getAsInt();
         shopJpaRepository.deleteById(id);
     }
+
+    public List<Shop> findByNameEquals(String shopName) {
+        System.out.println("ログ");
+        System.out.println(shopName);
+        return shopJpaRepository.findByNameEquals(shopName);
+    }
 }
