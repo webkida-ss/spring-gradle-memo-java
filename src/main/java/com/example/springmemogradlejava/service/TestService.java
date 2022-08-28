@@ -92,6 +92,14 @@ public class TestService {
         dept.setDivId(29500);
         deptJpaRepository.saveAndFlush(dept);
     }
+    public Dept dept3(Integer deptId) {
+        System.out.println("ログ");
+        Dept dept = deptJpaRepository.findById(deptId).get();
+        System.out.println(dept.getAppUserList().size());
+        return dept;
+    }
+
+
 //
 //    public void dept2() {
 //        System.out.println("ログ");
@@ -110,12 +118,7 @@ public class TestService {
 //        deptJpaRepository.saveAndFlush(dept);
 //    }
 //
-//    public List<AppUser> user1() {
-//        System.out.println("ログ");
-//        List<AppUser> list = appUserJpaRepository.findAll().subList(0, 2);
-//        list.forEach(e -> System.out.println(e.getDept()));
-//        return list;
-//    }
+
 //
 //    public List<AppUser> user2() {
 //        System.out.println("ログ");

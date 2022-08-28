@@ -59,19 +59,10 @@ public class TestController {
         return "終わり";
     }
 
-//    @GetMapping("/dept2")
-//    public String dept() {
-//        testService.dept2();
-//        return "終わり";
-//    }
-//
-//    @GetMapping("/user1")
-//    public List<AppUser> user1() {
-//        return testService.user1();
-//    }
-//
-//    @GetMapping("/user2")
-//    public List<AppUser> user2() {
-//        return testService.user2();
-//    }
+
+    @GetMapping("/dept3")
+    public String dept3(@RequestParam(name = "dept_id") String deptId) {
+        return testService.dept3(Integer.parseInt(deptId)).getName();
+    }
+
 }

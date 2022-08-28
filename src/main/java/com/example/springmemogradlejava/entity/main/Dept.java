@@ -32,12 +32,8 @@ public class Dept {
     @JoinColumn(name = "div_id", insertable = false, updatable = false)// joinカラムでfindすると結合しながら取得可能
     private Div div;// insertable = false, updatable = false 参照用の値であることを明示
 
-
-
-
-
     // 部署（dept）:ユーザ（user）= 1:多  mappedByには対抗先の変数名を指定する
     // https://gist.github.com/momotar/edccbea0e9712a3b3a6e
-//    @OneToMany(mappedBy = "dept")
-//    private List<AppUser> appUserList;
+    @OneToMany(mappedBy = "dept")// 双方向
+    private List<AppUser> appUserList;
 }
