@@ -1,5 +1,6 @@
 package com.example.springmemogradlejava.controller;
 
+import com.example.springmemogradlejava.entity.main.AppUser;
 import com.example.springmemogradlejava.entity.main.Dept;
 import com.example.springmemogradlejava.entity.main.Div;
 import com.example.springmemogradlejava.entity.main.Shop;
@@ -51,4 +52,20 @@ public class TestController {
     public List<Dept> dept1() {
         return testService.dept1();
     }
+
+//    @GetMapping("/dept2")
+//    public String dept() {
+//        testService.dept2();
+//        return "終わり";
+//    }
+//
+//    @GetMapping("/user1")
+//    public List<AppUser> user1() {
+//        return testService.user1();
+//    }
+//
+//    @GetMapping("/user2")
+//    public List<AppUser> user2() {
+//        return testService.user2();
+//    }
 }
