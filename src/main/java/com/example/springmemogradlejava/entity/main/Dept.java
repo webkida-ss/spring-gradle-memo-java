@@ -24,12 +24,17 @@ public class Dept {
     private int id;
     private String name;
 
-    @Column(name = "div_id")// FKはカラム名を明示しないとDuplicateMappingException
-    private Integer divId;
+    // JoinColumnとでカラムかぶりするので、insertableを指定（デフォルトtrueなのでなくてもOK）
+    @Column(name = "div_id", insertable = true, updatable = true)// FKはカラム名を明示しないとDuplicateMappingException
+    private Integer divId;// ここにセットした値がデータ登録される
 
     @ManyToOne // dept（部門）：div（事業部）= 多：1
     @JoinColumn(name = "div_id", insertable = false, updatable = false)// joinカラムでfindすると結合しながら取得可能
-    private Div div;// insertable = false, updatable = false 参照用で有ることを示す
+    private Div div;// insertable = false, updatable = false 参照用の値であることを明示
+
+
+
+
 
     // 部署（dept）:ユーザ（user）= 1:多  mappedByには対抗先の変数名を指定する
     // https://gist.github.com/momotar/edccbea0e9712a3b3a6e

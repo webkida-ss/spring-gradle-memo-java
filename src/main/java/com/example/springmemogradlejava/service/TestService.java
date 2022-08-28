@@ -79,6 +79,19 @@ public class TestService {
         list.forEach(e -> System.out.println(e.getDiv()));
         return list;
     }
+
+    public void dept2() {
+        System.out.println("ログ");
+        Div div = new Div();
+        div.setId(29000);
+        int deptId = 30000;
+        Dept dept = new Dept();
+        dept.setId(deptId);
+        dept.setName("deptテスト"+deptId);
+        dept.setDiv(div);
+        dept.setDivId(29500);
+        deptJpaRepository.saveAndFlush(dept);
+    }
 //
 //    public void dept2() {
 //        System.out.println("ログ");

@@ -53,6 +53,12 @@ public class TestController {
         return testService.dept1();
     }
 
+    @GetMapping("/dept2")
+    public String dept2() {
+        testService.dept2();
+        return "終わり";
+    }
+
 //    @GetMapping("/dept2")
 //    public String dept() {
 //        testService.dept2();
