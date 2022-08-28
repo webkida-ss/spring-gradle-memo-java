@@ -1,14 +1,17 @@
 package com.example.springmemogradlejava.service;
 
+import com.example.springmemogradlejava.entity.main.Dept;
+import com.example.springmemogradlejava.entity.main.Div;
 import com.example.springmemogradlejava.entity.main.Shop;
 import com.example.springmemogradlejava.repository.main.AppUserJpaRepository;
+import com.example.springmemogradlejava.repository.main.DeptJpaRepository;
+import com.example.springmemogradlejava.repository.main.DivJpaRepository;
 import com.example.springmemogradlejava.repository.main.ShopJpaRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 
 @Service
@@ -16,6 +19,9 @@ import java.util.List;
 public class TestService {
     private final ShopJpaRepository shopJpaRepository;
     private final AppUserJpaRepository appUserJpaRepository;
+
+    private final DeptJpaRepository deptJpaRepository;
+    private final DivJpaRepository divJpaRepository;
 
     public List<Shop> findAll() {
         System.out.println("ログ");
@@ -49,6 +55,7 @@ public class TestService {
         shopJpaRepository.saveAll(shopList);// 登録データをセット
         shopJpaRepository.flush();// DBに反映
     }
+
     public void delete() {
         System.out.println("ログ");
         List<Shop> list = shopJpaRepository.findAll();
@@ -61,5 +68,12 @@ public class TestService {
         System.out.println("ログ");
         System.out.println(shopName);
         return shopJpaRepository.findByNameEquals(shopName);
+    }
+
+    public List<Dept> dept1() {
+        System.out.println("ログ");
+        List<Dept> list = deptJpaRepository.findAll().subList(0, 2);
+        list.forEach(e -> System.out.println(e.getDiv()));
+        return list;
     }
 }

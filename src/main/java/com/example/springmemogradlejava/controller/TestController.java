@@ -1,5 +1,7 @@
 package com.example.springmemogradlejava.controller;
 
+import com.example.springmemogradlejava.entity.main.Dept;
+import com.example.springmemogradlejava.entity.main.Div;
 import com.example.springmemogradlejava.entity.main.Shop;
 import com.example.springmemogradlejava.service.TestService;
 import lombok.RequiredArgsConstructor;
@@ -7,6 +9,8 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -41,5 +45,10 @@ public class TestController {
         Shop shop =testService.findByNameEquals(shopName)
                 .stream().findFirst().get();
         return shop.getId();
+    }
+
+    @GetMapping("/dept1")
+    public List<Dept> dept1() {
+        return testService.dept1();
     }
 }
