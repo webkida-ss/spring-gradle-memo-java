@@ -99,6 +99,11 @@ public class TestService {
         return dept;
     }
 
+    public void dept4(Integer deptId) {
+        System.out.println("ログ");
+        deptJpaRepository.deleteById(deptId);// 伝搬する設定のため、ユーザも消される！
+    }
+
 
 //
 //    public void dept2() {

@@ -43,7 +43,7 @@ public class TestController {
 
     @GetMapping("/test5")
     public Integer test5(@RequestParam(name = "shop_name") String shopName) {
-        Shop shop =testService.findByNameEquals(shopName)
+        Shop shop = testService.findByNameEquals(shopName)
                 .stream().findFirst().get();
         return shop.getId();
     }
@@ -59,10 +59,14 @@ public class TestController {
         return "終わり";
     }
 
-
     @GetMapping("/dept3")
     public String dept3(@RequestParam(name = "dept_id") String deptId) {
         return testService.dept3(Integer.parseInt(deptId)).getName();
     }
 
+    @GetMapping("/dept4")
+    public String dept4(@RequestParam(name = "dept_id") String deptId) {
+        testService.dept4(Integer.parseInt(deptId));
+        return "終わり";
+    }
 }

@@ -34,6 +34,6 @@ public class Dept {
 
     // 部署（dept）:ユーザ（user）= 1:多  mappedByには対抗先の変数名を指定する
     // https://gist.github.com/momotar/edccbea0e9712a3b3a6e
-    @OneToMany(mappedBy = "dept")// 双方向
-    private List<AppUser> appUserList;
+    @OneToMany(mappedBy = "dept", cascade = CascadeType.ALL)// カスケード（伝搬）を指定することで、Deptが削除された場合にFKとするユーザも削除される！（FKだからカスケードしないと例外発生！）
+    private List<AppUser> appUserList;// 双方向
 }
