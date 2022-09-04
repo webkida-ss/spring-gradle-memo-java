@@ -1,7 +1,11 @@
 plugins {
 	id 'org.springframework.boot' version '2.7.3'
 	id 'io.spring.dependency-management' version '1.0.13.RELEASE'
-	id 'java'
+	id 'java' // ビルドに必要な必須プラグイン
+	// https://tech.excite.co.jp/entry/2022/08/15/153626
+	// pluginsはgradle.buildの中で使うような依存関係
+	// id "org.openapi.generator" version "6.0.1"
+	// → OpenAPI関連のタスク周りを定義できたりする
 }
 
 group = 'com.example'
@@ -19,7 +23,7 @@ repositories {
 }
 
 dependencies {
-
+	// dependenciesはアプリケーションの中で使うような依存関係
 	implementation 'com.microsoft.sqlserver:mssql-jdbc'
 
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
@@ -33,15 +37,24 @@ tasks.named('test') {
 	useJUnitPlatform()
 }
 
-task myTask {
-	println "コンパイル時に実行（myTask）"
+task myTask1 {
+	// https://qiita.com/opengl-8080/items/0a192b62ee87d8ac7578
+	println "設定フェーズ"
 	doFirst{
-		println "doFirst：タスク実行前に処理"
+		println "実行フェーズ：doFirst タスク実行前に処理"
 	}
 	doLast{
-		println "doLast：タスク実行後に処理"
+		println "実行フェーズ：doLast タスク実行後に処理"
+	}
+}
+task myTask2 {
+	doFirst{
+		println "実行フェーズ（myTask2）"
 	}
 }
 
 // コンパイル時に実行
-compileJava.dependsOn tasks.myTask
+compileJava.dependsOn tasks.myTask2
+// タスク2はタスク1に依存する
+tasks.myTask2.dependsOn tasks.myTask1
+// タスク1 → タスク2 → コンパイルの順番で実行される
