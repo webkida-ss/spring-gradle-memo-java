@@ -32,3 +32,16 @@ dependencies {
 tasks.named('test') {
 	useJUnitPlatform()
 }
+
+task myTask {
+	println "コンパイル時に実行（myTask）"
+	doFirst{
+		println "doFirst：タスク実行前に処理"
+	}
+	doLast{
+		println "doLast：タスク実行後に処理"
+	}
+}
+
+// コンパイル時に実行
+compileJava.dependsOn tasks.myTask
