@@ -18,8 +18,11 @@ configurations {
 	}
 }
 
-repositories {
+repositories {// https://qiita.com/tenten0213/items/41cd8eb0a3fce121095c
+	// 参照リポジトリは複数かける！上から優先順位
+	// google()
 	mavenCentral()
+	// jcenter()
 }
 
 dependencies {
