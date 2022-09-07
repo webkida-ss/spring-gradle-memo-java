@@ -1,4 +1,10 @@
-plugins {
+buildscript {// all buildscript {} blocks must appear before any plugins {} blocks in the script
+	ext {
+		testValBSExt1 = 'testValBSExt1'
+	}
+}
+
+plugins {// プラグインの前に来れるのは、buildscriptとpluginManagementのみ
 	id 'org.springframework.boot' version '2.7.3'
 	id 'io.spring.dependency-management' version '1.0.13.RELEASE'
 	id 'java' // ビルドに必要な必須プラグイン
@@ -7,6 +13,14 @@ plugins {
 	// id "org.openapi.generator" version "6.0.1"
 	// → OpenAPI関連のタスク周りを定義できたりする
 }
+
+// only buildscript {}, pluginManagement {} and other plugins {} script blocks are allowed before plugins {} blocks, no other statements are allowed
+ext {
+	testValExt1 = 'testValExt1'
+}
+// 適当なプロパティをルートにはセットできない模様
+// testValNortmal1 = 'testValNortmal1' //  Could not set unknown property
+
 
 group = 'com.example'
 version = '0.0.1-SNAPSHOT'
@@ -45,6 +59,9 @@ task myTask1 {
 	println "設定フェーズ"
 	doFirst{
 		println "実行フェーズ：doFirst タスク実行前に処理"
+//		println "${testValNortmal1}"
+		println "${testValExt1}"
+		println "${testValBSExt1}"
 	}
 	doLast{
 		println "実行フェーズ：doLast タスク実行後に処理"
